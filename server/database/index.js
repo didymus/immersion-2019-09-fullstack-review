@@ -11,6 +11,11 @@ mongoose.connect(DB_URI, { useNewUrlParser: true })
 
 const repoSchema = new mongoose.Schema({
   // TODO: your schema here!
+  id: Number,
+  name: String, // this will be owner.login
+  description: String, // rest are same
+  html_url: String,
+  repos_url: String,
 });
 
 const Repo = mongoose.model('Repo', repoSchema);
@@ -18,11 +23,16 @@ const Repo = mongoose.model('Repo', repoSchema);
 const saveRepo = () => {
   // TODO: Your code here
   // This function should save a repo to the MongoDB
+
+  // make a collection (array?)
+  // parse the repo?
+  // loop through parsed repos?
 };
 
 const getTop25Repos = () => {
   // TODO: Your code here
   // This function should get the repos from mongo
+  // Repo.find(something)
 };
 
 module.exports.SORTING_BY_FIELD = SORTING_BY_FIELD;
