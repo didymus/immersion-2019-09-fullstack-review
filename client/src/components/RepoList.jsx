@@ -3,8 +3,32 @@ import PropTypes from 'prop-types';
 
 const RepoList = props => (
   <div>
-    <h4>Repo List Component</h4>
-    Top {props.repos.length} repos by YOUR_CRITERIA.
+    <h4>Repo-Man</h4>
+    Showing {props.repos.length} repos:
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Page Link</th>
+          <th>Repos Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        {props.repos.map((repo) => {
+          return (
+            <tr key={repo._id}>
+              <td>{repo.id}</td>
+              <td>{repo.name}</td>
+              <td>{repo.description}</td>
+              <td><a href={repo.html_url}>{repo.html_url}</a></td>
+              <td><a href={repo.repos_url}>{repo.repos_url}</a></td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
   </div>
 );
 
