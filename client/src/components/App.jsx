@@ -26,7 +26,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <h1>Github Fetcher</h1>
+        <img src='https://vignette.wikia.nocookie.net/logopedia/images/5/5b/RepoMan1984logo.png/'></img>
         <RepoList repos={repos} />
         <Search onSearch={this.handleSearch} />
       </div>

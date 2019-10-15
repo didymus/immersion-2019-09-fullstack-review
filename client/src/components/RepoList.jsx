@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const RepoList = props => (
   <div>
-    <h4>Repo-Man</h4>
+    <h4> Repo List Component </h4>
     Showing {props.repos.length} repos:
     <table>
       <thead>
@@ -11,8 +11,8 @@ const RepoList = props => (
           <th>Id</th>
           <th>Name</th>
           <th>Description</th>
-          <th>Page Link</th>
-          <th>Repos Link</th>
+          <th>Page</th>
+          <th>Repos</th>
         </tr>
       </thead>
       <tbody>
