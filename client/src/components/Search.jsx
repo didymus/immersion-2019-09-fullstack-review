@@ -8,7 +8,9 @@ class Search extends React.Component {
     this.state = {
       username: '',
     };
-
+    // //binding async calls
+    // this.handleChange = this.handleChange.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange(e) {
