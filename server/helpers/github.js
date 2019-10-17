@@ -2,9 +2,9 @@ const axios = require('axios');
 
 const config = require('../config');
 const db = require('../database');
-const testData = require('../data.json');
+// const testData = require('../data.json');
 
-const getReposByUsername = () => {
+const getReposByUsername = (username, callback) => {
   // TODO: Use the axios module to get repos for a specific user from the github API
 
   // The options object has been provided to help you out,
@@ -17,14 +17,15 @@ const getReposByUsername = () => {
       'Authorization': `token ${config.GITHUB_TOKEN}`,
     },
   };
-request.get(options, (err, githubObject){
-  if(err){
-    console.log('Error: ', err);
-  } else {
-    console.log(null, githubObject.body);
-    callback(githubObject);
-  }
-});
+
+ request.get(options, (err, githubObject) => {
+   if(err){
+     console.log('Error: ', err);
+   } else {
+     console.log(null, githubObject.body);
+     callback(githubObject);
+   }
+  });
 };
 
 module.exports.getReposByUsername = getReposByUsername;
