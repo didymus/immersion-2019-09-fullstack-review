@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-const DB_URI = 'mongodb://localhost/fetcher';
+const DB_URI = 'mongodb://localhost/Repo';
 // TODO: Put the field you are gonna use to sort the repos by.
 // Your schema should have this field.
-const SORTING_BY_FIELD = '';
+const SORTING_BY_FIELD = 'name';
 
 mongoose.connect(DB_URI, { useNewUrlParser: true })
   .then(() => console.log('Connected to database'))
@@ -17,7 +17,6 @@ const repoSchema = new mongoose.Schema({
   description: String, // rest are same
   html_url: String,
   repos_url: String,
-});
 
 const Repo = mongoose.model('Repo', repoSchema);
 
@@ -25,17 +24,14 @@ const saveRepo = (githubObject) => {
   // TODO: Your code here
   // This function should save a repo to the MongoDB 
   const repoCollection = [];
-  const parsedRepos = githubObject.data;
-  // make a collection (array?)
-  // parse the repo?
-  // loop through parsed repos?
-  for (let i = 0; i < parsedRepos.length; i++) {
+
+  for (let i = 0; i < githubObject.data.length; i++) {
     const repoObj = {};
-    repoObj.id = parsedRepos[i].id;
-    repoObj.name = parsedRepos[i].owner.login;
-    repoObj.description = parsedRepos[i].description;
-    repoObj.html_url = parsedRepos[i].html_url;
-    repoObj.repos_url = parsedRepos[i].repos_url;
+    repoObj.id = githubObject.data[i].id;
+    repoObj.name = githubObject.data[i].owner.login;
+    repoObj.description = githubObject.data[i].description;
+    repoObj.html_url = githubObject.data[i].html_url;
+    repoObj.repos_url = githubObject.data[i].repos_url;
   
     const repo = new Repo(repoObj);
 
