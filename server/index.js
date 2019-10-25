@@ -9,7 +9,7 @@ dotenv.config({
   path: path.resolve(__dirname, '../.env'),
 });
 
-const app = express();
+const express = express();
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static(__dirname + '/../client/dist')); // serves
 
@@ -17,17 +17,17 @@ const { app } = require('./app');
 
 const PORT = 8080;
 
-app.post('/repos', (req, res) => {
+express.post('/repos', (req, res) => {
 helpers.getReposByUsername(req.body.data, (githubObject) => {
   db.saveRepo(githubObject);
 });
 res.end('Saved');
 });
 
-app.get('/repos', (repos) => {
+express.get('/repos', (repos) => {
   res.json(repos);
 })
 
-app.listen(PORT, () => {
+express.listen(PORT, () => {
   console.log(`Server listening on :${PORT}`);
 });
