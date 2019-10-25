@@ -3,6 +3,7 @@ const config = require('../config');
 const db = require('../database');
 // const testData = require('../data.json');
 
+
 const getReposByUsername = (username, callback) => {
   // TODO: Use the axios module to get repos for a specific user from the github API
 
@@ -17,13 +18,20 @@ const getReposByUsername = (username, callback) => {
   };
   // https://developer.github.com/v3/#user-agent-required
 
-  axios.get(options, (err, githubObject) => {
-    if (err) {
-      console.log('Error in API GET: ', err);
-    } else {
-      callback(githubObject);
-    }
-  });
+  // axios.get(options.url, (err, githubObject) => {
+  //   if (err) {
+  //     console.log('Error in API GET: ', err);
+  //   } else {
+  //     callback(githubObject);
+  //   }
+  // });
+  axios.get(options.url, options.headers).then((githubObject => {
+  //console.log('************', githubObject);
+  //githubObject;
+  db.saveRepo(githubObject);
+  })).catch((err) => {
+    console.log('Error in API GET: ', err);
+  })
 };
 
 module.exports.getReposByUsername = getReposByUsername;

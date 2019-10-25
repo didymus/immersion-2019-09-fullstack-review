@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 const DB_URI = 'mongodb://localhost/fetcher';
 // TODO: Put the field you are gonna use to sort the repos by.
@@ -24,7 +25,7 @@ const saveRepo = (githubObject) => {
   // TODO: Your code here
   // This function should save a repo to the MongoDB 
   const repoCollection = [];
-  const parsedRepos = JSON.parse(githubObject.body);
+  const parsedRepos = githubObject.data;
   // make a collection (array?)
   // parse the repo?
   // loop through parsed repos?
@@ -54,7 +55,7 @@ const getTop25Repos = (callback) => {
   // TODO: Your code here
   // This function should get the repos from mongo
   // Repo.find(something)
-  repo.find((err, repos) => {
+  Repo.find((err, repos) => {
     if (err) {
       console.log('Error: ', err);
     } else {

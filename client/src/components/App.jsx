@@ -13,6 +13,7 @@ class App extends React.Component {
     };
 
     this.handleSearch = this.handleSearch.bind(this);
+    axios.get('/repos');
   }
 
 
