@@ -11,18 +11,18 @@ const getReposByUsername = (username, callback) => {
   const options = {
     url: `https://api.github.com/users/${username}/repos`,
     headers: {
-      // https://developer.github.com/v3/#user-agent-required
       'User-Agent': 'request',
       'Authorization': `token ${config.GITHUB_TOKEN}`,
     },
   };
+  // https://developer.github.com/v3/#user-agent-required
 
- axios.get(options, (err, githubObject) => {
-   if(err){
-     console.log('Error: ', err);
-   } else {
-     callback(githubObject);
-   }
+  axios.get(options, (err, githubObject) => {
+    if (err) {
+      console.log('Error in API GET: ', err);
+    } else {
+      callback(githubObject);
+    }
   });
 };
 

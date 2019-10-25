@@ -54,7 +54,7 @@ const getTop25Repos = (callback) => {
   // TODO: Your code here
   // This function should get the repos from mongo
   // Repo.find(something)
-  Repo.find((err, repos) => {
+  repo.find((err, repos) => {
     if (err) {
       console.log('Error: ', err);
     } else {

@@ -20,7 +20,7 @@ class App extends React.Component {
     console.log(`${username} was searched`);
     // TODO
    //axios request here
-   axios.get('/repos');
+   axios.post('/repos', { username });
   }
 
   render() {
