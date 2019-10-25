@@ -41,8 +41,11 @@ const saveRepo = (githubObject) => {
     repo.save((err) => {
       if (err) {
         console.log('Error: ', err);
+      } else {
+        console.log('Repo was saved!');
       }
     });
+
     repoCollection.push(repoObj);
   }
 };

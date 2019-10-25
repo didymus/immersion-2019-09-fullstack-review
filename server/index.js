@@ -19,7 +19,7 @@ const PORT = 8080;
 
 app.post('/repos', (req, res) => {
 helpers.getReposByUsername(req.body.data, (githubObject) => {
-  db.save(githubObject);
+  db.saveRepo(githubObject);
 });
 res.end('Saved');
 });
