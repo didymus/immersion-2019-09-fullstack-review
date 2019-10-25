@@ -1,5 +1,4 @@
 const axios = require('axios');
-
 const config = require('../config');
 const db = require('../database');
 // const testData = require('../data.json');
@@ -18,11 +17,10 @@ const getReposByUsername = (username, callback) => {
     },
   };
 
- request.get(options, (err, githubObject) => {
+ axios.get(options, (err, githubObject) => {
    if(err){
      console.log('Error: ', err);
    } else {
-     console.log(null, githubObject.body);
      callback(githubObject);
    }
   });

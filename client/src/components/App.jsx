@@ -19,6 +19,8 @@ class App extends React.Component {
   handleSearch(username) {
     console.log(`${username} was searched`);
     // TODO
+   //axios request here
+   axios.get('/repos');
   }
 
   render() {

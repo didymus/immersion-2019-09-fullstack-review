@@ -22,13 +22,13 @@ const Repo = mongoose.model('Repo', repoSchema);
 
 const saveRepo = (githubObject) => {
   // TODO: Your code here
-  // This function should save a repo to the MongoDB
+  // This function should save a repo to the MongoDB 
   const repoCollection = [];
   const parsedRepos = JSON.parse(githubObject.body);
   // make a collection (array?)
   // parse the repo?
   // loop through parsed repos?
-  for (let i = 0; i < parsedRepos.length; i + 1) {
+  for (let i = 0; i < parsedRepos.length; i++) {
     const repoObj = {};
     repoObj.id = parsedRepos[i].id;
     repoObj.name = parsedRepos[i].owner.login;
